@@ -124,7 +124,7 @@ return [
     |
     */
 
-    'cache_tags' => env('CACHE_DRIVER', 'array') === "file" ? [] : ['torann-geoip-location'],
+    'cache_tags' => ['torann-geoip-location'],
 
     /*
     |--------------------------------------------------------------------------

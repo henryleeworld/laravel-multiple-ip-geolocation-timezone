@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use DateTimeZone;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,8 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $timezoneCookie = request()->cookie('timezone'); 
-        $timezone = (in_array($timezoneCookie, DateTimeZone::listIdentifiers())) ? $timezoneCookie : ((auth()->check()) ? auth()->user()->timezone : geoip()->getLocation(request()->ip())->timezone);
-        config(['user.timezone' => $timezone]);
+        //
     }
 }
