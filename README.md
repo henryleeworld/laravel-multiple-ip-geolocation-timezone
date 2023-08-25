@@ -1,4 +1,4 @@
-# Laravel 8 多 IP 地理位置定位時區
+# Laravel 10 多 IP 地理位置定位時區
 
 引入 torann 的 geoip 套件來擴增利用 IP 位址地理位置定位所在的時區，應用程式會讓使用者看到的是當地時間。如果某個區域改變了時區，而且你在我們得知時區更改以前就已經建立資料，這場資料的時區可能會有錯誤。
 
@@ -12,7 +12,7 @@ $ git clone
 ```sh
 $ composer install
 ```
-- 產⽣ Laravel 要使用的一組 32 字元長度的隨機字串 APP_KEY 並存在 .env 內。
+- 產生 Laravel 要使用的一組 32 字元長度的隨機字串 APP_KEY 並存在 .env 內。
 ```sh
 $ php artisan key:generate
 ```
@@ -26,8 +26,8 @@ $ php artisan migrate --seed
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/ruGWLfd.png)
+![](https://i.imgur.com/K5ANwUW.png)
 > 轉換使用者顯示的對應標準時間
 
-![](https://i.imgur.com/pJfBeSq.png)
+![](https://i.imgur.com/ny64ZIx.png)
 > 儲存資料則以應用程式的時區對應標準時間為準
