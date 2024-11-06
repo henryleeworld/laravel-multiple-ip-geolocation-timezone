@@ -24,7 +24,7 @@ class UserController extends Controller
     {
         $users = User::whereIn('id', [1, 2])->get();
         foreach ($users as $user) {
-            echo '使用者：' . $user->name . ' ，' . '建立時間：' . $user->created_at . '<br/>';
+            echo __('User:') . $user->name . __(' is created on ') . $user->created_at . __('.') . '<br/>';
             // 只想要更新模型的時間戳
             $user->touch();
         }

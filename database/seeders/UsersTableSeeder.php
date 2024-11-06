@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -12,23 +13,23 @@ class UsersTableSeeder extends Seeder
         $users = [
             [
                 'id'             => 1,
-                'name'           => 'Admin',
+                'name'           => __('Admin'),
                 'email'          => 'admin@admin.com',
-                'password'       => 'password',
+                'password'       => Hash::make('password'),
                 'remember_token' => null,
                 'timezone'       => 'UTC',
-                'created_at'     => '2023-04-14 11:55:21',
-                'updated_at'     => '2023-04-14 11:55:21',
+                'created_at'     => now(),
+                'updated_at'     => now(),
             ],
 		    [
                 'id'             => 2,
-                'name'           => 'Henry Lee',
+                'name'           => __('Henry Lee'),
                 'email'          => 'henryleeworld@gmail.com',
-                'password'       => 'password',
+                'password'       => Hash::make('password'),
                 'remember_token' => null,
                 'timezone'       => 'Asia/Taipei',
-                'created_at'     => '2023-04-14 12:14:31',
-                'updated_at'     => '2023-04-14 12:14:31',
+                'created_at'     => now(),
+                'updated_at'     => now(),
             ],
 		];
         User::insert($users);
