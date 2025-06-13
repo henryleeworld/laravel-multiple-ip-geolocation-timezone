@@ -1,4 +1,4 @@
-# Laravel 11 多 IP 地理位置定位時區
+# Laravel 12 多 IP 地理位置定位時區
 
 引入 torann 的 geoip 套件來擴增利用 IP 位址地理位置定位所在的時區，應用程式會讓使用者看到的是當地時間。如果某個區域改變了時區，而且你在我們得知時區更改以前就已經建立資料，這場資料的時區可能會有錯誤。
 
@@ -26,8 +26,8 @@ $ php artisan migrate --seed
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/DdQs9B9.png)
+![](https://i.imgur.com/NMWHauq.png)
 > 轉換使用者顯示的對應標準時間
 
-![](https://i.imgur.com/S63Ji3A.png)
+![](https://i.imgur.com/l0L1BT9.png)
 > 儲存資料則以應用程式的時區對應標準時間為準

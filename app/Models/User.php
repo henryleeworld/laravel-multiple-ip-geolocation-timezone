@@ -2,32 +2,34 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
 
 class User extends Authenticatable
 {
+    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $fillable = [
         'name',
         'email',
         'password',
-        'timezone'
+        'timezone',
     ];
 
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $hidden = [
         'password',
@@ -47,27 +49,25 @@ class User extends Authenticatable
         ];
     }
 
-    public  function getCreatedAtAttribute($value) {
-        $date = Carbon::createFromFormat('Y-m-d H:i:s', $value, config('app.timezone'));
-        $date->setTimezone($this->attributes['timezone']);
-        return $date;
-    }
-
-    public function setCreatedAtAttribute($value)
+    /**
+     * Interact with the user's created time.
+     */
+    protected function createdAt(): Attribute
     {
-        $this->attributes['created_at'] = 
-        Carbon::parse($value, $this->attributes['timezone'])->setTimezone(config('app.timezone'));
+        return Attribute::make(
+            get: fn (mixed $value, array $attributes) => (Carbon::createFromFormat('Y-m-d H:i:s', $value, config('app.timezone')))->setTimezone($attributes['timezone']),
+            set: fn (mixed $value, array $attributes) => Carbon::parse($value, $attributes['timezone'])->setTimezone(config('app.timezone')),
+        );
     }
 
-    public  function getUpdatedAtAttribute($value) {
-        $date = Carbon::createFromFormat('Y-m-d H:i:s', $value, config('app.timezone'));
-        $date->setTimezone($this->attributes['timezone']);
-        return $date;
-    }
-
-    public function setUpdatedAtAttribute($value)
+    /**
+     * Interact with the user's updated time.
+     */
+    protected function updatedAt(): Attribute
     {
-        $this->attributes['updated_at'] = 
-        Carbon::parse($value, $this->attributes['timezone'])->setTimezone(config('app.timezone'));
+        return Attribute::make(
+            get: fn (mixed $value, array $attributes) => (Carbon::createFromFormat('Y-m-d H:i:s', $value, config('app.timezone')))->setTimezone($attributes['timezone']),
+            set: fn (mixed $value, array $attributes) => Carbon::parse($value, $attributes['timezone'])->setTimezone(config('app.timezone')),
+        );
     }
 }

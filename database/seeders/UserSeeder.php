@@ -6,9 +6,12 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
-class UsersTableSeeder extends Seeder
+class UserSeeder extends Seeder
 {
-    public function run()
+    /**
+     * Run the database seeders.
+     */
+    public function run(): void
     {
         $users = [
             [
@@ -24,7 +27,7 @@ class UsersTableSeeder extends Seeder
 		    [
                 'id'             => 2,
                 'name'           => __('Henry Lee'),
-                'email'          => 'henryleeworld@gmail.com',
+                'email'          => 'henry@admin.com',
                 'password'       => Hash::make('password'),
                 'remember_token' => null,
                 'timezone'       => 'Asia/Taipei',
